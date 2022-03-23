@@ -1,1 +1,74 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$the-meal-primary: mat.define-palette(mat.$teal-palette, 500);
+$the-meal-accent: mat.define-palette(mat.$teal-palette, A400);
+
+// The warn palette is optional (defaults to red).
+$the-meal-warn: mat.define-palette(mat.$pink-palette, 400);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$the-meal-theme: mat.define-light-theme((
+  color: (
+    primary: $the-meal-primary,
+    accent: $the-meal-accent,
+    warn: $the-meal-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($the-meal-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body {height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: rgba($color: #ffe3b3, $alpha: 0.2);
+}
+
+.container {
+  margin-top: 64px !important;
+}
+
+.mat-toolbar {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.full-width {
+  width: 100%;
+}
+
+a {
+  color: #29B6F6;
+  text-decoration: none;
+
+  &:hover {
+    color: #039BE5;
+  }
+}
+
+.shadow {
+  box-shadow: 0px 4px 5px -1px rgba(128,127,127,0.75);
+  -webkit-box-shadow: 0px 4px 5px -1px rgba(128,127,127,0.75);
+  -moz-box-shadow: 0px 4px 5px -1px rgba(128,127,127,0.75);
+}
+
+.error-hint {
+  color: #EC407A;
+}
