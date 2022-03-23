@@ -1,0 +1,23 @@
+.auth-form {
+  width: 100%;
+  height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 20px;
+    background: white;
+  }
+
+  .title, .actions, .signup {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+}

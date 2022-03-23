@@ -1,0 +1,31 @@
+
+<div class="auth-form">
+  <div class="title">
+    <h1>Inicio de sesión</h1>
+  </div>
+  <div class="form shadow">
+    <form [formGroup]="authForm" (ngSubmit)="authUser()">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput placeholder="Correo electrónico" type="email" formControlName="email" id="email" maxlength="100" required>
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-hint class="error-hint" *ngIf="isValidFormControlName('email')">Correo electrónico requerido</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput placeholder="Contraseña" type="password" formControlName="password" id="password" maxlength="100" required>
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-hint class="error-hint" *ngIf="isValidFormControlName('password')">Contraseña requerida</mat-hint>
+      </mat-form-field>
+      <div class="actions">
+        <button mat-raised-button color="accent" [disabled]="loading">
+          <span>Iniciar sesión</span>
+        </button>
+      </div>
+    </form>
+    <div class="signup">
+      <p>¿No tienes cuenta? Crea una cuenta <a routerLink="/auth/signup">aquí.</a></p>
+    </div>
+  </div>
+  <!-- <app-spinner></app-spinner> -->
+</div>
