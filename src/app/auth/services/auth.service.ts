@@ -5,6 +5,10 @@ import { map, Observable, Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
+import { Store } from '@ngrx/store';
+import * as authActions from '../auth.actions';
+import { AppStateMainSystem } from './../../main-system/main-system.reducer';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +20,7 @@ export class AuthService {
   constructor(
     private auth: AngularFireAuth,
     private firestore: AngularFirestore,
-    // private store: Store<AppStateLoanSystem>
+    private store: Store<AppStateMainSystem>
   ) { }
 
   get user() {
@@ -92,7 +96,7 @@ export class AuthService {
       this.getUser(user);
     } else {
       this._user = null;
-      // this.store.dispatch(authActions.unsetUser());
+      this.store.dispatch(authActions.unsetUser());
       if (this.userSubscription) {
         this.userSubscription.unsubscribe();
       }
@@ -105,7 +109,7 @@ export class AuthService {
         const { uid, name, email } = fUser;
         const newUser: UserModel =  { uid, name, email } as UserModel;
         this._user = { ...newUser } as UserModel;
-        // this.store.dispatch(authActions.setUser({user: newUser}));
+        this.store.dispatch(authActions.setUser({user: newUser}));
       }
     );
   }

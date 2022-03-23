@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommonsModule } from '../commons.module';
@@ -17,7 +18,8 @@ import { SignupComponent } from './components/signup/signup.component';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    CommonsModule
+    CommonsModule,
+    SharedModule
   ]
 })
 export class AuthModule { }

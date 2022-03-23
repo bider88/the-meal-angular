@@ -1,1 +1,48 @@
-<p>dashboard works!</p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <span>The meal 🥗</span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <div class="content">
+        <a mat-list-item
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}">
+          <mat-icon>home</mat-icon>Inicio
+        </a>
+        <a mat-list-item routerLink="/popular-ingredients" routerLinkActive="active">
+          <mat-icon>star</mat-icon>Ingredientes populares
+        </a>
+        <a mat-list-item routerLink="/dishes" routerLinkActive="active">
+          <mat-icon>restaurant</mat-icon>Platillos
+        </a>
+        <a mat-list-item routerLink="/account" routerLinkActive="active">
+          <mat-icon>account_circle</mat-icon>Perfil
+        </a>
+        <hr>
+        <a mat-list-item routerLink="/auth/signin" (click)="logoutUser()">
+          <mat-icon>logout</mat-icon>Cerrar sesión
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="container-toolbar">
+        <div class="actions-toolbar">
+          <mat-icon>person</mat-icon>
+          <span>{{name}}</span>
+        </div>
+      </div>
+    </mat-toolbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

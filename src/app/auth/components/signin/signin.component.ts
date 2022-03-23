@@ -6,6 +6,9 @@ import { Subscription } from 'rxjs';
 import { UserModel } from './../../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { ToastService } from './../../../services/utils/toast.service';
+import * as ui from '../../../shared/ui.actions';
+import { Store } from '@ngrx/store';
+import { AppStateMainSystem } from './../../../main-system/main-system.reducer';
 
 @Component({
   selector: 'app-signin',
@@ -26,7 +29,7 @@ export class SigninComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private toastService: ToastService,
-    // private store: Store<AppStateLoanSystem>
+    private store: Store<AppStateMainSystem>
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +42,7 @@ export class SigninComponent implements OnInit {
 
   authUser(): void {
     if (this.authForm.valid) {
-      // this.store.dispatch(ui.isLoading());
+      this.store.dispatch(ui.isLoading());
       const user: UserModel = { ...this.authForm.value } as UserModel;
       const subscription = this.authService.loginUser(user).subscribe({
         next: () => this.router.navigate(['/']),
@@ -61,7 +64,7 @@ export class SigninComponent implements OnInit {
   }
 
   stopLoading(): void {
-    // this.store.dispatch(ui.stopLoading());
+    this.store.dispatch(ui.stopLoading());
   }
 
 }
