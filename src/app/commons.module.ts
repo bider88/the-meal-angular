@@ -17,6 +17,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const materialModules = [
   MatFormFieldModule,
@@ -36,6 +37,7 @@ const materialModules = [
 const commonModules = [
   RouterModule,
   FormsModule,
+  HttpClientModule,
   ReactiveFormsModule,
   NgxSpinnerModule
 ];

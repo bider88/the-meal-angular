@@ -1,5 +1,5 @@
 import { AN_ERROR_HAS_OCURRED, firebaseMessages } from './../../../models/constants/constant';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -15,7 +15,7 @@ import { AppStateMainSystem } from './../../../main-system/main-system.reducer';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit, OnDestroy {
 
   authForm: FormGroup = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
@@ -32,9 +32,7 @@ export class SigninComponent implements OnInit {
     private store: Store<AppStateMainSystem>
   ) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());

@@ -1,4 +1,5 @@
-import { firebaseMessages } from './../models/constants/constant';
+import { setMainlyDish, unsetMainlyDish } from './../main-system/main-system.actions';
+import { AN_ERROR_HAS_OCURRED_WHEN_WAS_PROCESSED, firebaseMessages } from './../models/constants/constant';
 import { AN_ERROR_HAS_OCURRED } from 'src/app/models/constants/constant';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -6,9 +7,9 @@ import { Router } from '@angular/router';
 import { filter, map, Observable, shareReplay, Subscription } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 import { ToastService } from '../services/utils/toast.service';
-import { UserModel } from '../models/user.model';
 import { AppStateMainSystem } from '../main-system/main-system.reducer';
 import { Store } from '@ngrx/store';
+import { DishesService } from '../main-system/services/dishes.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,15 +32,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private toastService: ToastService,
+    private dishesService: DishesService,
     private store: Store<AppStateMainSystem>,
   ) { }
 
   ngOnInit(): void {
     this.listenMainSystemList();
+    this.getMainlyDishToday();
   }
 
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
+    this.store.dispatch(unsetMainlyDish())
   }
 
   logoutUser() {
@@ -62,6 +66,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
       }
     );
+    this.subscriptions.push(subscription);
+  }
+
+  getMainlyDishToday(): void {
+    const subscription = this.dishesService.getMainlyDishToday().subscribe({
+      next: mainlyDish => {
+        this.store.dispatch(setMainlyDish({mainlyDish}));
+      },
+      error: error => {
+        console.warn(error);
+        this.toastService.showError({
+          title: AN_ERROR_HAS_OCURRED,
+          message: AN_ERROR_HAS_OCURRED_WHEN_WAS_PROCESSED
+        });
+      }
+    });
     this.subscriptions.push(subscription);
   }
 
