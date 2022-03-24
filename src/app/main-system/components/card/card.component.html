@@ -1,29 +1,61 @@
-<mat-card class="example-card">
+<mat-card class="example-card" *ngIf="dish">
   <mat-card-header>
     <div mat-card-avatar>
-      <img class="s-cover" [src]="image">
+      <img class="s-cover" [src]="dish.strMealThumb">
     </div>
     <mat-card-title>
-      <a href="">{{title}}</a>
+      <a *ngIf="!detail else detailTemplate" routerLink="/detail-dish">Platillo del día</a>
+      <ng-template #detailTemplate>
+        <span>{{dish.strMeal}}</span>
+      </ng-template>
     </mat-card-title>
-    <mat-card-subtitle>{{subTitle}}</mat-card-subtitle>
+    <mat-card-subtitle>
+      <span *ngIf="!detail">{{dish.strMeal}}</span>
+    </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <div class="container-video">
+    <div *ngIf="!detail else coverDish" class="container-video">
       <div class="video-wrapper">
-        <iframe [src]="video| embedUrlYt | safeUrl" title="Platillo del día" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe [src]="dish.strYoutube | embedUrlYt | safeUrl" title="Platillo del día" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div>
-    <div class="container-ingredients">
-      <p>Ingredientes:</p>
+    <ng-template #coverDish>
+      <div class="image-cover">
+        <img [src]="dish.strMealThumb" [alt]="dish.strMeal">
+      </div>
+      <div class="detail-dish">
+
+      </div>
+    </ng-template>
+    <div class="container-detail">
+      <div *ngIf="detail">
+        <h3>Categoría:</h3>
+        <mat-chip-list aria-label="Category">
+          <mat-chip color="primary" selected>{{dish.strCategory}}</mat-chip>
+        </mat-chip-list>
+        <h3>Región:</h3>
+        <mat-chip-list aria-label="Category">
+          <mat-chip>{{dish.strArea}}</mat-chip>
+        </mat-chip-list>
+      </div>
+      <h3>Ingredientes:</h3>
       <mat-chip-list aria-label="Ingredients">
         <mat-chip *ngFor="let ingredient of ingredients" color="accent" selected>{{ingredient}}</mat-chip>
       </mat-chip-list>
+      <div *ngIf="detail">
+        <h3>Cocine usted mismo:</h3>
+        <p>
+          {{dish.strInstructions}}
+        </p>
+        <p>
+          <a [href]="dish.strSource" target="_blank">Más información aquí</a>
+        </p>
+      </div>
     </div>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions *ngIf="!detail">
     <div class="container-actions">
-      <a mat-button>Ver platillo</a>
+      <a routerLink="/detail-dish">Ver detalles</a>
     </div>
   </mat-card-actions>
 </mat-card>

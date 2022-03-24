@@ -13,6 +13,7 @@ import { mainSystemReducer } from './main-system.reducer';
 import { CardComponent } from './components/card/card.component';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { EmbedUrlYtPipe } from './pipes/embed-url-yt.pipe';
+import { DetailDishComponent } from './views/detail-dish/detail-dish.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { EmbedUrlYtPipe } from './pipes/embed-url-yt.pipe';
     AccountComponent,
     CardComponent,
     SafeUrlPipe,
-    EmbedUrlYtPipe
+    EmbedUrlYtPipe,
+    DetailDishComponent
   ],
   imports: [
     CommonModule,
