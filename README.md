@@ -16,7 +16,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   ```
   - Crear una cuenta con un correo y contraseña para acceder (Correo: user@user.com  Contraseña: rootroot).
 
-  PD: También se puede probar la aplicación deployada en Firebase con la URL [https://the-meal-test.web.app](the-meal-test.web.app)
+  PD: También se puede probar la aplicación deployada en Firebase con la URL [https://the-meal-test.web.app/](https://the-meal-test.web.app/)
 
 ## Development server
 
