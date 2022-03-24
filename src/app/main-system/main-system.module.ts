@@ -5,7 +5,6 @@ import { MainSystemRoutingModule } from './main-system-routing.module';
 import { HomeComponent } from './views/home/home.component';
 import { PopularIngredientsComponent } from './views/popular-ingredients/popular-ingredients.component';
 import { DishesComponent } from './views/dishes/dishes.component';
-import { AccountComponent } from './views/account/account.component';
 import { CommonsModule } from '../commons.module';
 
 import { StoreModule } from '@ngrx/store';
@@ -24,7 +23,6 @@ import { ListDishesComponent } from './views/list-dishes/list-dishes.component';
     HomeComponent,
     PopularIngredientsComponent,
     DishesComponent,
-    AccountComponent,
     SafeUrlPipe,
     EmbedUrlYtPipe,
     DetailDishComponent,

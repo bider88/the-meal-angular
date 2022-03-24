@@ -2,6 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
+## Requisitos para probar la aplicación
+  - Crear una aplicación de firebase.
+  - Copiar el objeto con los valores de conexión, projectId, apiKey, storageBucket, etc... En `src/environments/config-firebase.ts`.
+  - Activar la opción de Firestore en Firebase (Sólo se usa para guardar información del usuario).
+  - Instalar dependencias con:
+  ```
+  $ npm install
+  ```
+  - Levantar la aplicación:
+  ```
+  $ ng serve --open
+  ```
+  - Crear una cuenta con un correo y contraseña para acceder (Correo: user@user.com  Contraseña: rootroot).
+
+  PD: También se puede probar la aplicación deployada en Firebase con la URL [https://the-meal-test.web.app](the-meal-test.web.app)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
