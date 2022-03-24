@@ -18,8 +18,8 @@ import { AppStateMainSystem } from './../../../main-system/main-system.reducer';
 export class SigninComponent implements OnInit, OnDestroy {
 
   authForm: FormGroup = this.fb.group({
-    email: [null, [Validators.required, Validators.email]],
-    password: [null, Validators.required]
+    email: ['user@user.com', [Validators.required, Validators.email]],
+    password: ['rootroot', Validators.required]
   });
   loading = false;
   subscriptions: Subscription[] = [];

@@ -1,1 +1,12 @@
-<p>dishes works!</p>
+<div class="list-grid">
+  <ng-template ngFor let-dish [ngForOf]="$dishes | async" let-i="index">
+    <app-card-detail
+      [id]="dish.idMeal"
+      [title]=" dish.strMeal"
+      [image]="dish.strMealThumb"
+      navigateTo="detail-dish"
+      param="dish"
+    >
+    </app-card-detail>
+  </ng-template>
+</div>

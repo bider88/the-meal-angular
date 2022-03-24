@@ -14,6 +14,7 @@ import { DishesService } from './../../services/dishes.service';
 export class DetailDishComponent implements OnInit {
 
   dish: MealModel | null = null;
+  noData: boolean = false;
   ingredients: string[] = [];
   subscriptions: Subscription[] = [];
 
@@ -36,7 +37,14 @@ export class DetailDishComponent implements OnInit {
       next: ({dish}: any) => {
         if (dish) {
           this.dishesService.searchDish(dish).subscribe({
-            next: dish => this.dish = dish
+            next: dish => {
+              this.noData = false;
+              if (!!dish) {
+                this.dish = dish
+              } else {
+                this.noData = true;
+              }
+            }
           });
         } else {
           this.listenStore();

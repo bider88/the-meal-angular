@@ -27,9 +27,9 @@ export class DishesService extends HttpService {
     );
   }
 
-  searchDish(dish: string = ''): Observable<MealModel> {
+  searchDish(dish: string = ''): Observable<MealModel | null> {
     return this.http.get<ResponseModel<MealModel>>(`${this.apiUrl}search.php?s=${dish}`).pipe(
-      map(({meals}) => meals[0])
+      map(({meals}) => meals ? meals[0] : null)
     );
   }
 

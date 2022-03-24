@@ -1,6 +1,7 @@
 <app-card-detail-dish
-  *ngIf="dish"
+  *ngIf="dish && !noData"
   [dish]="dish"
   [detail]="true"
 >
 </app-card-detail-dish>
+<h2 *ngIf="!dish && noData">No se encontró resultados</h2>
