@@ -10,6 +10,9 @@ import { CommonsModule } from '../commons.module';
 
 import { StoreModule } from '@ngrx/store';
 import { mainSystemReducer } from './main-system.reducer';
+import { CardComponent } from './components/card/card.component';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { EmbedUrlYtPipe } from './pipes/embed-url-yt.pipe';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { mainSystemReducer } from './main-system.reducer';
     HomeComponent,
     PopularIngredientsComponent,
     DishesComponent,
-    AccountComponent
+    AccountComponent,
+    CardComponent,
+    SafeUrlPipe,
+    EmbedUrlYtPipe
   ],
   imports: [
     CommonModule,

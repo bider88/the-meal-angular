@@ -1,0 +1,29 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <img class="s-cover" [src]="image">
+    </div>
+    <mat-card-title>
+      <a href="">{{title}}</a>
+    </mat-card-title>
+    <mat-card-subtitle>{{subTitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container-video">
+      <div class="video-wrapper">
+        <iframe [src]="video| embedUrlYt | safeUrl" title="Platillo del día" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div>
+    <div class="container-ingredients">
+      <p>Ingredientes:</p>
+      <mat-chip-list aria-label="Ingredients">
+        <mat-chip *ngFor="let ingredient of ingredients" color="accent" selected>{{ingredient}}</mat-chip>
+      </mat-chip-list>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="container-actions">
+      <a mat-button>Ver platillo</a>
+    </div>
+  </mat-card-actions>
+</mat-card>

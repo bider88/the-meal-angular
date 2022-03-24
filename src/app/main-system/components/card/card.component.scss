@@ -1,0 +1,44 @@
+.s-cover {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.container-video {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.container-ingredients {
+  margin-top: 20px;
+}
+
+.container-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 1400px) {
+  .container-video {
+    width: 100%;
+    margin: 0;
+  }
+}

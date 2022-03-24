@@ -1,1 +1,9 @@
-<p>home works!</p>
+<app-card
+  *ngIf="mainlyDish"
+  title="Platillo del día"
+  [subTitle]="mainlyDish.strMeal"
+  [image]="mainlyDish.strMealThumb"
+  [video]="mainlyDish.strYoutube"
+  [ingredients]="ingredients"
+  >
+</app-card>

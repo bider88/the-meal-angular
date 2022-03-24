@@ -12,6 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { NgxSpinnerModule } from "ngx-spinner";
 
@@ -31,7 +32,8 @@ const materialModules = [
   MatTableModule,
   MatPaginatorModule,
   MatCardModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatChipsModule
 ];
 
 const commonModules = [
