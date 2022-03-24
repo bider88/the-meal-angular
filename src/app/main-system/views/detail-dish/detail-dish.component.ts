@@ -1,8 +1,10 @@
-import { MealModel } from './../../../models/meal.model';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { MealModel } from './../../../models/meal.model';
 import { AppStateMainSystem } from '../../main-system.reducer';
+import { DishesService } from './../../services/dishes.service';
 
 @Component({
   selector: 'app-detail-dish',
@@ -16,15 +18,31 @@ export class DetailDishComponent implements OnInit {
   subscriptions: Subscription[] = [];
 
   constructor(
-    private store: Store<AppStateMainSystem>
+    private dishesService: DishesService,
+    private store: Store<AppStateMainSystem>,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.listenStore();
+    this.getQueryParam();
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
+
+  getQueryParam(): void {
+    this.route.queryParams.subscribe({
+      next: ({dish}: any) => {
+        if (dish) {
+          this.dishesService.searchDish(dish).subscribe({
+            next: dish => this.dish = dish
+          });
+        } else {
+          this.listenStore();
+        }
+      }
+    });
   }
 
   listenStore() {

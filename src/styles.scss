@@ -70,6 +70,21 @@ a {
   -moz-box-shadow: 0px 4px 5px -1px rgba(128,127,127,0.75);
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .error-hint {
   color: #EC407A;
+}
+
+.list-grid {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: space-around;
+  grid-template-rows: auto;
+  grid-column-gap: 30px;
+  grid-row-gap: 10px;
 }

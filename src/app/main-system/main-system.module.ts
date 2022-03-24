@@ -15,6 +15,8 @@ import { EmbedUrlYtPipe } from './pipes/embed-url-yt.pipe';
 import { DetailDishComponent } from './views/detail-dish/detail-dish.component';
 import { CardDetailDishComponent } from './components/card-detail-dish/card-detail-dish.component';
 import { CardDetailComponent } from './components/card-detail/card-detail.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { ListDishesComponent } from './views/list-dishes/list-dishes.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { CardDetailComponent } from './components/card-detail/card-detail.compon
     EmbedUrlYtPipe,
     DetailDishComponent,
     CardDetailDishComponent,
-    CardDetailComponent
+    CardDetailComponent,
+    TruncatePipe,
+    ListDishesComponent
   ],
   imports: [
     CommonModule,

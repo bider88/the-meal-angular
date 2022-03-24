@@ -1,3 +1,4 @@
+import { IngredientModel } from './../../models/ingredient.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
@@ -15,8 +16,26 @@ export class DishesService extends HttpService {
     super();
   }
   getMainlyDishToday(): Observable<MealModel> {
-    return this.http.get<ResponseModel>(`${this.apiUrl}random.php`).pipe(
+    return this.http.get<ResponseModel<MealModel>>(`${this.apiUrl}random.php`).pipe(
       map(({meals}) => meals[0])
+    );
+  }
+
+  getDishesByIngredients(): Observable<IngredientModel[]> {
+    return this.http.get<ResponseModel<IngredientModel>>(`${this.apiUrl}list.php?i=list`).pipe(
+      map(({meals}) => meals)
+    );
+  }
+
+  searchDish(dish: string = ''): Observable<MealModel> {
+    return this.http.get<ResponseModel<MealModel>>(`${this.apiUrl}search.php?s=${dish}`).pipe(
+      map(({meals}) => meals[0])
+    );
+  }
+
+  filterDishesByIngredient(ingredient: string = ''): Observable<MealModel[]> {
+    return this.http.get<ResponseModel<MealModel>>(`${this.apiUrl}filter.php?i=${ingredient}`).pipe(
+      map(({meals}) => meals)
     );
   }
 }

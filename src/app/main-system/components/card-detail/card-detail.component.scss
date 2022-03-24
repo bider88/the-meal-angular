@@ -1,0 +1,19 @@
+$background-color: #ffe3b3;
+
+.mat-card {
+  background-color: rgba($color: $background-color, $alpha: 0.05);
+  transition: all 0.3s;
+
+  &.hover:hover {
+    background-color: rgba($color: $background-color, $alpha: 0.2);
+  }
+
+  .container-image {
+    width: 100%;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}

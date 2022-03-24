@@ -1,1 +1,14 @@
-<app-card-detail></app-card-detail>
+<div class="list-grid">
+  <ng-template ngFor let-ingredient [ngForOf]="$ingredients | async" let-i="index">
+    <app-card-detail
+      *ngIf="i < 20"
+      [id]="ingredient.idIngredient"
+      [title]=" ingredient.strIngredient"
+      [description]="ingredient.strDescription"
+      navigateTo="list-dishes"
+      param="ingredient"
+    >
+    </app-card-detail>
+  </ng-template>
+</div>
+

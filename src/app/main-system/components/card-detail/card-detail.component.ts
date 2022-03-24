@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-detail',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() id: string = '';
+  @Input() title: string = '';
+  @Input() description: string = '';
+  @Input() navigateTo: string | null = null;
+  @Input() param: string = '';
+  @Input() image: string | null = null;
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  navigate(param: string): void {
+    if (this.navigateTo) {
+      this.router.navigate(
+        [`/${this.navigateTo}`],
+        !!param ? { queryParams: { [this.param]: param} } : {}
+      );
+    }
   }
 
 }

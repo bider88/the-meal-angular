@@ -5,13 +5,15 @@ import { PopularIngredientsComponent } from './views/popular-ingredients/popular
 import { AccountComponent } from './views/account/account.component';
 import { DishesComponent } from './views/dishes/dishes.component';
 import { DetailDishComponent } from './views/detail-dish/detail-dish.component';
+import { ListDishesComponent } from './views/list-dishes/list-dishes.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'popular-ingredients', component: PopularIngredientsComponent },
   { path: 'dishes', component: DishesComponent },
   { path: 'account', component: AccountComponent },
-  { path: 'detail-dish', component: DetailDishComponent }
+  { path: 'detail-dish', component: DetailDishComponent },
+  { path: 'list-dishes', component: ListDishesComponent }
 ];
 
 @NgModule({
