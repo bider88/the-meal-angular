@@ -31,22 +31,9 @@ export class DetailDishComponent implements OnInit {
     const subscription = this.store.select('mainSystem').subscribe(
       ({mainlyDish}) => {
         this.dish = mainlyDish;
-        this.buildIngredientList();
       }
     );
     this.subscriptions.push(subscription);
-  }
-
-  buildIngredientList() {
-    if (this.dish) {
-      for (let index: number = 1; index <= 20; index++) {
-        const key = `strIngredient${index}` as keyof typeof this.dish;
-        const ingredient = this.dish[key] ? this.dish[key] : null;
-        if (ingredient) {
-          this.ingredients.push(ingredient)
-        }
-      }
-    }
   }
 
 }

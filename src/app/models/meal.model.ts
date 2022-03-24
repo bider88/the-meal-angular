@@ -52,4 +52,5 @@ export interface MealModel {
   strImageSource: string;
   strCreativeCommonsConfirmed: string;
   dateModified: string;
+  ingredients?: string[];
 }

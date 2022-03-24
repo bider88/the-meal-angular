@@ -31,22 +31,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     const subscription = this.store.select('mainSystem').subscribe(
       ({mainlyDish}) => {
         this.mainlyDish = mainlyDish;
-        this.buildIngredientList();
       }
     );
     this.subscriptions.push(subscription);
-  }
-
-  buildIngredientList() {
-    if (this.mainlyDish) {
-      for (let index: number = 1; index <= 20; index++) {
-        const key = `strIngredient${index}` as keyof typeof this.mainlyDish;
-        const ingredient = this.mainlyDish[key] ? this.mainlyDish[key] : null;
-        if (ingredient) {
-          this.ingredients.push(ingredient)
-        }
-      }
-    }
   }
 
 }

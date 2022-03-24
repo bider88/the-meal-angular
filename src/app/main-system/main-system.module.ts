@@ -10,10 +10,11 @@ import { CommonsModule } from '../commons.module';
 
 import { StoreModule } from '@ngrx/store';
 import { mainSystemReducer } from './main-system.reducer';
-import { CardComponent } from './components/card/card.component';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { EmbedUrlYtPipe } from './pipes/embed-url-yt.pipe';
 import { DetailDishComponent } from './views/detail-dish/detail-dish.component';
+import { CardDetailDishComponent } from './components/card-detail-dish/card-detail-dish.component';
+import { CardDetailComponent } from './components/card-detail/card-detail.component';
 
 
 @NgModule({
@@ -22,10 +23,11 @@ import { DetailDishComponent } from './views/detail-dish/detail-dish.component';
     PopularIngredientsComponent,
     DishesComponent,
     AccountComponent,
-    CardComponent,
     SafeUrlPipe,
     EmbedUrlYtPipe,
-    DetailDishComponent
+    DetailDishComponent,
+    CardDetailDishComponent,
+    CardDetailComponent
   ],
   imports: [
     CommonModule,

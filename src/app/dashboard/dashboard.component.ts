@@ -1,3 +1,4 @@
+import { MealModel } from 'src/app/models/meal.model';
 import { setMainlyDish, unsetMainlyDish } from './../main-system/main-system.actions';
 import { AN_ERROR_HAS_OCURRED_WHEN_WAS_PROCESSED, firebaseMessages } from './../models/constants/constant';
 import { AN_ERROR_HAS_OCURRED } from 'src/app/models/constants/constant';
@@ -71,7 +72,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   getMainlyDishToday(): void {
     const subscription = this.dishesService.getMainlyDishToday().subscribe({
-      next: mainlyDish => {
+      next: dish => {
+        const mainlyDish = {...dish, ingredients: this.buildIngredientList(dish)}
         this.store.dispatch(setMainlyDish({mainlyDish}));
       },
       error: error => {
@@ -83,6 +85,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
     });
     this.subscriptions.push(subscription);
+  }
+
+  buildIngredientList(dish: MealModel) {
+    const ingredients: string[] = [];
+    if (dish) {
+      for (let index: number = 1; index <= 20; index++) {
+        const key = `strIngredient${index}` as keyof typeof dish;
+        const ingredient = dish[key] ? dish[key] : null;
+        if (ingredient) {
+          ingredients.push(ingredient as string);
+        }
+      }
+    }
+    return [...ingredients];
   }
 
 }

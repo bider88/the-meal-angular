@@ -40,7 +40,7 @@
       </div>
       <h3>Ingredientes:</h3>
       <mat-chip-list aria-label="Ingredients">
-        <mat-chip *ngFor="let ingredient of ingredients" color="accent" selected>{{ingredient}}</mat-chip>
+        <mat-chip *ngFor="let ingredient of dish.ingredients" color="accent" selected>{{ingredient}}</mat-chip>
       </mat-chip-list>
       <div *ngIf="detail">
         <h3>Cocine usted mismo:</h3>
